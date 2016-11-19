@@ -1,0 +1,10 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "adminlte": "",
+    "AdminLTE": "adminlte#^2.3.8",
+    "bootstrap": "3.3.6",
+    "fontawesome": "^4.7.0"
+  }
+}
