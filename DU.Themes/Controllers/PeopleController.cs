@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace DU.Themes.Controllers
 {
-    public class PeopleController : Controller
+    [Authorize]
+    public class PeopleController : BaseController
     {
         // GET: People
         public ActionResult Teachers()

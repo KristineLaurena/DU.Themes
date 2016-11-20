@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace DU.Themes.Controllers
 {
-    public class RequestController : Controller
+    [Authorize]
+    public class RequestController : BaseController
     {
         // GET: Request
         public ActionResult Index()
@@ -15,6 +16,11 @@ namespace DU.Themes.Controllers
         }
 
         public ActionResult NewRequest()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
         {
             return View();
         }

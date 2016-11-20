@@ -9,11 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DU.Themes.Models;
+using DU.Themes.Infrastructure;
 
 namespace DU.Themes.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -61,6 +62,36 @@ namespace DU.Themes.Controllers
             return View();
         }
 
+        ////
+        //// POST: /Account/Login
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    // This doesn't count login failures towards account lockout
+        //    // To enable password failures to trigger account lockout, change to shouldLockout: true
+        //    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+        //    switch (result)
+        //    {
+        //        case SignInStatus.Success:
+        //            return RedirectToLocal(returnUrl);
+        //        case SignInStatus.LockedOut:
+        //            return View("Lockout");
+        //        case SignInStatus.RequiresVerification:
+        //            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+        //        case SignInStatus.Failure:
+        //        default:
+        //            ModelState.AddModelError("", "Invalid login attempt.");
+        //            return View(model);
+        //    }
+        //}
+
         //
         // POST: /Account/Login
         [HttpPost]
@@ -73,22 +104,39 @@ namespace DU.Themes.Controllers
                 return View(model);
             }
 
+            if (UserManager.FindByEmail(model.Email) == null)
+            {
+                await UserManager.CreateAsync(new Person
+                {
+                    FirstName = "Greatest",
+                    LastName = "Ever",
+                    Email = model.Email,
+                    UserName = "ST150670",
+                });
+            }
+
+            //await UserManager.CreateAsync(new Person
+            //{
+            //    FirstName = "Admin",
+            //    LastName = "Admin",
+            //    Email = model.Email,
+            //    UserName = "Admin",
+            //});
+            //ApplicationDbContext ctx = new ApplicationDbContext();
+            //ctx.Roles.Add(new CustomRole { Name = Roles.SystemAdministrator });
+            //ctx.SaveChanges();
+            //await UserManager.AddToRoleAsync(2, Roles.SystemAdministrator);
+     
+          
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }
+
+            var usr = UserManager.FindByEmail(model.Email);
+            await SignInManager.SignInAsync(usr, true, model.RememberMe);
+
+            return RedirectToLocal(returnUrl);
+
         }
 
         //
@@ -151,7 +199,7 @@ namespace DU.Themes.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new Person { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -181,7 +229,7 @@ namespace DU.Themes.Controllers
             {
                 return View("Error");
             }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            var result = await UserManager.ConfirmEmailAsync(Convert.ToInt64(userId), code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
@@ -367,7 +415,7 @@ namespace DU.Themes.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new Person { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

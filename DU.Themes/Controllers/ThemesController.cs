@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace DU.Themes.Controllers
 {
-    public class ThemesController : Controller
+    [Authorize]
+    public class ThemesController : BaseController
     {
         // GET: Themes
         public ActionResult Index()

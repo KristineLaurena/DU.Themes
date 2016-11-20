@@ -18,7 +18,7 @@
               <h3 class="box-title">Actions</h3>
             </div>	-->
             <div>
-                <button class="btn btn-default">123</button>
+                <button class="btn btn-default" id="secret">123</button>
             </div>
         </div>
         <div class="box-body">
@@ -48,24 +48,28 @@
                                 <th>Date</th>
                                 <th>Status</th>
                                 <th>Reason</th>
+                                <th>&nbsp;</th>
                             </tr>
                             <tr>
                                 <td>John Doe</td>
                                 <td>11-7-2014</td>
                                 <td><span class="label label-success">Approved</span></td>
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                <td><a href="@Url.Action("Edit","Request")" class="btn btn-info">Edit</a></td>
                             </tr>
                             <tr>
                                 <td>Alexander Pierce</td>
                                 <td>11-7-2014</td>
                                 <td><span class="label label-warning">Pending</span></td>
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                <td><a href="@Url.Action("Edit","Request")" class="btn btn-info">Edit</a></td>
                             </tr>
                             <tr>
                                 <td>Mike Doe</td>
                                 <td>11-7-2014</td>
                                 <td><span class="label label-danger">Denied</span></td>
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                <td><a href="@Url.Action("Edit","Request")" class="btn btn-info">Edit</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -305,6 +309,24 @@
         });
 
         console.log(app);
+
+
+        document.getElementById("secret").onclick = function () {
+            var url = "@Url.HttpRouteUrl("DefaultApi", new { controller = "requestApi", action = "test" })";
+            
+            $.ajax({
+                url: url,
+                method: "POST",
+                contentType: "application/json; UTF8",
+            }).done(function () {
+                toastr.info('created');
+            }).error(function (xhr, param1, param2, param3) {
+                toastr.error(param2);
+                console.log(xhr ,param1, param2, param3);
+            })
+
+            //alert(url);
+        }
 
 
     </script> }

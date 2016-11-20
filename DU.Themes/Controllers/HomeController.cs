@@ -1,4 +1,5 @@
-﻿using DU.Themes.Models;
+﻿using DU.Themes.Infrastructure;
+using DU.Themes.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace DU.Themes.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -21,6 +22,7 @@ namespace DU.Themes.Controllers
             return View();
         }
 
+        [Authorize(Roles = Roles.Student)]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
