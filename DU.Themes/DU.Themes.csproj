@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentValidation, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.6.4.0-beta8\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
@@ -199,11 +203,20 @@
     <Compile Include="HtmlHeplers\HtmlHelperExtensions.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Infrastructure\Roles.cs" />
+    <Compile Include="Mappings\AppProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\ModelResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\RequestStatus.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Theme.cs" />
@@ -288,6 +301,12 @@
     <Content Include="webpack.config.js" />
     <None Include="Properties\PublishProfiles\asd.pubxml" />
     <Content Include="Views\Request\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Models\ModelResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

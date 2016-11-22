@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using DU.Themes.Validaiton.Request;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace DU.Themes.Api
 {
@@ -18,7 +19,7 @@ namespace DU.Themes.Api
 
         public RequestApiController()
         {
-            
+
         }
 
         public RequestApiController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -27,9 +28,9 @@ namespace DU.Themes.Api
         }
 
         public ApplicationUserManager UserManager
-        {           
+        {
             get
-            {               
+            {
                 return _userManager ?? this.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
             private set
@@ -37,12 +38,13 @@ namespace DU.Themes.Api
                 _userManager = value;
             }
         }
+
         [HttpPost]
         [Authorize(Roles = Roles.Student)]
         //[AllowAnonymous]
         public async void test()
         {
-            var userId = Convert.ToInt64(this.User.Identity.GetUserId());     
+            var userId = Convert.ToInt64(this.User.Identity.GetUserId());
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -69,7 +71,6 @@ namespace DU.Themes.Api
                     tran.Commit();
                 }
             }
-            
         }
 
 
@@ -100,7 +101,7 @@ namespace DU.Themes.Api
                 {
                     tran.Commit();
                 });
-                            
+
             }
         }
 
@@ -122,13 +123,32 @@ namespace DU.Themes.Api
             {
                 var requestDB = await ctx.Requests.ByIdAsync(request.Id);
 
-                this.UpdateRequest(requestDB, request, ctx);                
+                this.UpdateRequest(requestDB, request, ctx);
                 requestDB.Touch();
                 requestDB.Validate(new RequestValidator());
 
                 await ctx.SaveChangesAsync();
                 tran.Commit();
             }
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IEnumerable<RequestModel> Requests()
+        {
+            IEnumerable<RequestModel> result = null;
+            using (var ctx = new ApplicationDbContext())
+            {
+                result = ctx.Requests
+                     .Include(nameof(Models.Request.Student))
+                     .Include(nameof(Models.Request.Teacher))
+                     .OrderBy(x => x.Id)            
+                     .Take(10)
+                     .ToList()
+                     .Select(x => x.CastTo<Request, RequestModel>());
+            }
+
+            return result;
         }
 
         private void UpdateRequest(Request requestDB, Request request, ApplicationDbContext ctx)
@@ -169,6 +189,6 @@ namespace DU.Themes.Api
             requestDB.SeenByTeacher = false;
         }
 
-       
+
     }
 }

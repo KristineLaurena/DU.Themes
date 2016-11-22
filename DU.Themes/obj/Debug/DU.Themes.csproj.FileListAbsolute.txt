@@ -94,3 +94,8 @@ F:\Soft\DU.Themes\DU.Themes\bin\ru\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\sv\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\tr\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\zh-CN\FluentValidation.resources.dll
+F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.csprojResolveAssemblyReference.cache
+F:\Soft\DU.Themes\DU.Themes\bin\AutoMapper.dll
+F:\Soft\DU.Themes\DU.Themes\bin\AutoMapper.xml
+F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.Models.ModelResources.resources
+F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.csproj.GenerateResource.Cache
