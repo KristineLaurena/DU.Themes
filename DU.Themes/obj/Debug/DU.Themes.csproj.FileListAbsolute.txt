@@ -14,8 +14,10 @@ F:\Soft\DU.Themes\DU.Themes\bin\DU.Themes.dll.config
 F:\Soft\DU.Themes\DU.Themes\bin\DU.Themes.dll
 F:\Soft\DU.Themes\DU.Themes\bin\DU.Themes.pdb
 F:\Soft\DU.Themes\DU.Themes\bin\Antlr3.Runtime.dll
+F:\Soft\DU.Themes\DU.Themes\bin\AutoMapper.dll
 F:\Soft\DU.Themes\DU.Themes\bin\EntityFramework.dll
 F:\Soft\DU.Themes\DU.Themes\bin\EntityFramework.SqlServer.dll
+F:\Soft\DU.Themes\DU.Themes\bin\FluentValidation.dll
 F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.AspNet.Identity.Core.dll
 F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -35,6 +37,7 @@ F:\Soft\DU.Themes\DU.Themes\bin\Owin.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Net.Http.Formatting.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Helpers.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Http.dll
+F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Http.Owin.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Http.WebHost.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Mvc.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Optimization.dll
@@ -43,7 +46,11 @@ F:\Soft\DU.Themes\DU.Themes\bin\System.Web.WebPages.Deployment.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.WebPages.dll
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.WebPages.Razor.dll
 F:\Soft\DU.Themes\DU.Themes\bin\WebGrease.dll
+F:\Soft\DU.Themes\DU.Themes\bin\AutoMapper.xml
+F:\Soft\DU.Themes\DU.Themes\bin\FluentValidation.pdb
+F:\Soft\DU.Themes\DU.Themes\bin\FluentValidation.xml
 F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Http.Owin.xml
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Helpers.xml
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Mvc.xml
 F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Optimization.xml
@@ -70,13 +77,6 @@ F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.Owin.Security.OAuth.xml
 F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.Owin.Security.Google.xml
 F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.Owin.Security.Twitter.xml
 F:\Soft\DU.Themes\DU.Themes\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.dll
-F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.pdb
-F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Http.Owin.dll
-F:\Soft\DU.Themes\DU.Themes\bin\System.Web.Http.Owin.xml
-F:\Soft\DU.Themes\DU.Themes\bin\FluentValidation.dll
-F:\Soft\DU.Themes\DU.Themes\bin\FluentValidation.pdb
-F:\Soft\DU.Themes\DU.Themes\bin\FluentValidation.xml
 F:\Soft\DU.Themes\DU.Themes\bin\cs\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\da\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\de\FluentValidation.resources.dll
@@ -94,8 +94,8 @@ F:\Soft\DU.Themes\DU.Themes\bin\ru\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\sv\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\tr\FluentValidation.resources.dll
 F:\Soft\DU.Themes\DU.Themes\bin\zh-CN\FluentValidation.resources.dll
-F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.csprojResolveAssemblyReference.cache
-F:\Soft\DU.Themes\DU.Themes\bin\AutoMapper.dll
-F:\Soft\DU.Themes\DU.Themes\bin\AutoMapper.xml
 F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.Models.ModelResources.resources
 F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.csproj.GenerateResource.Cache
+F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.dll
+F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.pdb
+F:\Soft\DU.Themes\DU.Themes\obj\Debug\DU.Themes.csprojResolveAssemblyReference.cache

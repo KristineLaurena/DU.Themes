@@ -6,13 +6,14 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using DU.Themes.Validaiton.Request;
+using DU.Themes.ValidaitonApiFilter.Request;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace DU.Themes.Api
 {
-    [Authorize]
+    //[Authorize]
     public class RequestApiController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -41,8 +42,9 @@ namespace DU.Themes.Api
 
         [HttpPost]
         [Authorize(Roles = Roles.Student)]
+        //[Authorize]
         //[AllowAnonymous]
-        public async void test()
+        public async Task test()
         {
             var userId = Convert.ToInt64(this.User.Identity.GetUserId());
 
@@ -73,10 +75,9 @@ namespace DU.Themes.Api
             }
         }
 
-
         [HttpPost]
         [Authorize(Roles = Roles.Student)]
-        public async void Create(Request request)
+        public async Task Create(Request request)
         {
             var user = this.UserManager.FindById(Convert.ToInt64(this.User.Identity.GetUserId()));
 
@@ -108,7 +109,7 @@ namespace DU.Themes.Api
         [HttpPost]
         [Authorize(Roles = Roles.Student + ", " + Roles.Teacher)]
         //public async Task<IHttpActionResult> Update(Request request)
-        public async void Update(Request request)
+        public async Task Update(Request request)
         {
             var userId = Convert.ToInt64(this.User.Identity.GetUserId());
 
@@ -136,6 +137,8 @@ namespace DU.Themes.Api
         [Authorize]
         public IEnumerable<RequestModel> Requests()
         {
+            //var usr = UserManager.FindByName(this.User.Identity.Name);
+
             IEnumerable<RequestModel> result = null;
             using (var ctx = new ApplicationDbContext())
             {
@@ -149,6 +152,13 @@ namespace DU.Themes.Api
             }
 
             return result;
+        }
+
+        [Authorize]
+        [HttpGet]
+        public RequestModel Empty()
+        {
+            return new RequestModel();
         }
 
         private void UpdateRequest(Request requestDB, Request request, ApplicationDbContext ctx)
@@ -188,7 +198,5 @@ namespace DU.Themes.Api
             requestDB.SeenByStudent = true;
             requestDB.SeenByTeacher = false;
         }
-
-
     }
 }

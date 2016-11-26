@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using DU.Themes.Infrastructure;
 
 namespace DU.Themes.Models
@@ -27,6 +24,13 @@ namespace DU.Themes.Models
             {
                 return this.Status.FromResource();
             }
+        }
+
+        public RequestModel()
+        {
+            this.Student = new PersonModel();
+            this.Teacher = new PersonModel();
+            this.Status = RequestStatus.New;
         }
     }
 }

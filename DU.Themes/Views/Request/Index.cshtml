@@ -18,12 +18,12 @@
               <h3 class="box-title">Actions</h3>
             </div>	-->
             <div>
+                <a href="@Url.Action("NewRequest", "Request")" class="btn btn-info"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
                 <button class="btn btn-default" id="secret">123</button>
             </div>
         </div>
         <div class="box-body">
             <div id="app">
-                {{ message }}
                 <div is="grid-template" editUrl="@Url.Action("Edit", "Request")" fetchUrl=""></div>.
             </div>
             <div id="example-2">
@@ -49,7 +49,7 @@
                                 <td>{{item.CreatedOn}}</td>
                                 <td>{{item.StatusRepresentation}}</td>
                                 @*<td><a v-bind:href="{{'@Url.Action("Edit", "Request")' + '/' + item.Id }}" href="#" class="btn btn-info">Edit</a></td>*@
-                                <td><a v-bind:href="editUrl" class="btn btn-info">Edit</a>{{editUrl}}</td>
+                                <td><a v-bind:href="'@Url.Action("Edit", "Request")' + '/'+item.Id" class="btn btn-info">Edit</a>{{editUrl}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -250,8 +250,9 @@
                     , hwaccel: true // Whether to use hardware acceleration
                     , position: 'absolute' // Element positioning
                     }
-                    var target = document.getElementById('app')
+                    var target = document.getElementById('vue-app')
                     self.spinner = new Spinner(opts).spin(target);
+                    console.log(self.spinner);
 
                     $.ajax({
                         url: _url,

@@ -183,7 +183,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\DefaultController.cs" />
+    <Compile Include="Api\PersonController.cs" />
     <Compile Include="Api\RequestApiController.cs" />
+    <Compile Include="Api\ValidationApiFilterAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -197,10 +200,13 @@
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\ThemesController.cs" />
+    <Compile Include="ErrorHandlingAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHeplers\HtmlHelperExtensions.cs" />
+    <Compile Include="Infrastructure\Comparers\Comparers.cs" />
+    <Compile Include="Infrastructure\Comparers\ModelBaseComparer.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Infrastructure\Roles.cs" />
     <Compile Include="Mappings\AppProfile.cs" />
@@ -236,6 +242,7 @@
     <Content Include="gulpfile.js" />
     <Content Include="package.json" />
     <Content Include="Scripts\bundle.js" />
+    <Content Include="Scripts\loader.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />

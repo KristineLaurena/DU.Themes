@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace DU.Themes.Validaiton.Request
+namespace DU.Themes.ValidaitonApiFilter.Request
 {
     public class RequestValidator : AbstractValidator<Models.Request>
     {

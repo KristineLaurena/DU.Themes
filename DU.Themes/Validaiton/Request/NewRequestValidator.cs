@@ -4,7 +4,7 @@ using System;
 using FluentValidation.Results;
 using System.Linq;
 
-namespace DU.Themes.Validaiton.Request
+namespace DU.Themes.ValidaitonApiFilter.Request
 {
     public class NewRequestValidator : AbstractValidator<Models.Request>
     {
@@ -23,7 +23,7 @@ namespace DU.Themes.Validaiton.Request
 
         private ValidationFailure OnlyOneActiveRequest(ApplicationDbContext ctx, Models.Request request)
         {
-            if (ctx.Requests.Where(x => x.Status != RequestStatus.Cancelled && x.Year == null).Any())
+            if (ctx.Requests.Where(x => x.Student.Id == request.Student.Id && x.Status != RequestStatus.Cancelled && x.Year == null).Any())
             {
                 return new ValidationFailure("", "Already have one");
             }

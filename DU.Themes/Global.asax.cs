@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DU.Themes.Api;
 using DU.Themes.Mappings;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -17,7 +18,8 @@ namespace DU.Themes
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Mapper.Initialize(cfg => {
+            Mapper.Initialize(cfg =>
+            {
                 cfg.AddProfile<AppProfile>();
             });
 

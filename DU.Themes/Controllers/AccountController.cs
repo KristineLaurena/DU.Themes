@@ -104,30 +104,31 @@ namespace DU.Themes.Controllers
                 return View(model);
             }
 
-            if (UserManager.FindByEmail(model.Email) == null)
-            {
-                await UserManager.CreateAsync(new Person
-                {
-                    FirstName = "Greatest",
-                    LastName = "Ever",
-                    Email = model.Email,
-                    UserName = "ST150670",
-                });
-            }
-
-            //await UserManager.CreateAsync(new Person
+            //if (UserManager.FindByEmail(model.Email) == null)
             //{
-            //    FirstName = "Admin",
-            //    LastName = "Admin",
-            //    Email = model.Email,
-            //    UserName = "Admin",
-            //});
+            //    await UserManager.CreateAsync(new Person
+            //    {
+            //        FirstName = "Greatest",
+            //        LastName = "Ever",
+            //        Email = model.Email,
+            //        UserName = "ST150670",
+            //    });
+            //}
+
+            //var user = UserManager.FindByName("Admin");
+            //ApplicationDbContext ctx = new ApplicationDbContext();
+            //ctx.Roles.Add(new CustomRole { Name = Roles.Teacher });
+            //ctx.SaveChanges();
+            //UserManager.AddToRoles(user.Id, Roles.Teacher);
+
             //ApplicationDbContext ctx = new ApplicationDbContext();
             //ctx.Roles.Add(new CustomRole { Name = Roles.SystemAdministrator });
             //ctx.SaveChanges();
+
+
             //await UserManager.AddToRoleAsync(2, Roles.SystemAdministrator);
-     
-          
+
+
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -200,11 +201,25 @@ namespace DU.Themes.Controllers
             if (ModelState.IsValid)
             {
                 var user = new Person { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+
+                var person = new Person
+                {
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    StudentIdentifier = model.STNo,
+                    UserName = model.STNo,
+                };
+
+                var result = await UserManager.CreateAsync(person);
+
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    var usr = UserManager.FindByName(person.UserName);
+              
+                    UserManager.AddToRole(usr.Id, Roles.Student);
+                    await SignInManager.SignInAsync(usr, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

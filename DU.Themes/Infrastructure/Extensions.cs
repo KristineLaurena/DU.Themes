@@ -42,7 +42,7 @@ namespace DU.Themes.Infrastructure
         }
 
         /// <summary>
-        /// Performs Validation based on FluentValidation rules from <see cref="DU.Themes.Validaiton"/>
+        /// Performs Validation based on FluentValidation rules from <see cref="DU.Themes.ValidaitonApiFilter"/>
         /// <para>Throws <see cref="ValidationException"/> if any mistake occurs</para>
         /// </summary>
         /// <typeparam name="T">type  derived from <see cref="EntityBase"/> class</typeparam>
